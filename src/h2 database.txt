@@ -1,5 +1,0 @@
-spring.h2.consosle.enable=true
-spring.h2.console.path=/h2
-
-spring.jpa.hibernte.ddl-auto=create-drop
-spring.jpa.show-sql=true
