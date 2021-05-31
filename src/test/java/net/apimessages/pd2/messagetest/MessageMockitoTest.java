@@ -54,11 +54,19 @@ public class MessageMockitoTest {
 			add(m1);
 			add(m2);
 	    }};
-		System.out.print(rest.create(m2));
+		System.out.print(rest.getAll());
+	    System.out.print(rest.create(m2));
 		System.out.print(rest.create(m1));
-		
+		System.out.print(rest.getAll());
 		assertThat(rest.getAll()).isNotNull();
 		
+		Message m3 = new  Message(1l,"cf08b179-a4c7-4dee-8965-d9c94f9f013a", "cf08b179-a4c7-4dee-8965-d9c94f9f013a","this message H2");
+		Message m4 = new  Message(2l,"cf08b179-a4c7-4dee-8965-d9c94f9f013a", "cf08b179-a4c7-4dee-8965-d9c94f9f013a","this message H2");
+		
+		System.out.print(rest.getAll());
+	    System.out.print(rest.create(m3));
+		System.out.print(rest.create(m4));
+		System.out.print(rest.getAll());
 	}
 	
 	@Test
