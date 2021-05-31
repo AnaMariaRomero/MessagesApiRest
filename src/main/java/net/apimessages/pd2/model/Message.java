@@ -29,6 +29,12 @@ public class Message {
 		this.content = content;
 	}
 	
+	public Message(String sender, String recipient, String content) {
+		this.sender = sender;
+		this.recipient = recipient;
+		this.content = content;
+	}
+	
 	//Getters & Setters
 	public Long getId() {
 		return id;
