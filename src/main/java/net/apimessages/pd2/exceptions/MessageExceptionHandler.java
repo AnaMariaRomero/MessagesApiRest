@@ -10,13 +10,15 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
 public class MessageExceptionHandler extends ResponseEntityExceptionHandler{
 	
-	@ExceptionHandler(Exception.class)
+	 @ExceptionHandler(Throwable.class)
+	 @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
         List<String> details = new ArrayList<>();
         details.add(ex.getLocalizedMessage());
@@ -24,16 +26,16 @@ public class MessageExceptionHandler extends ResponseEntityExceptionHandler{
         return new ResponseEntity<Object>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
  
-    @ExceptionHandler(MessageNotFoundException.class)
-    public final ResponseEntity<Object> handleMessageNotFoundException(MessageNotFoundException ex, WebRequest request) {
+	@ExceptionHandler(MessageNotFoundException.class)
+    public ResponseEntity<Object> handleMessageNotFoundException(MessageNotFoundException ex) {
         List<String> details = new ArrayList<>();
         details.add(ex.getLocalizedMessage());
         MessageErrorResponse error = new MessageErrorResponse("Message Not Found", details);
         return new ResponseEntity<Object>(error, HttpStatus.NOT_FOUND);
     }
  
-    @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+    protected ResponseEntity<Object> handleHttpMessageNotReadable(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         List<String> details = new ArrayList<>();
         for(ObjectError error : ex.getBindingResult().getAllErrors()) {
             details.add(error.getDefaultMessage());

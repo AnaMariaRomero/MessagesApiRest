@@ -8,3 +8,15 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
+*.jar
+*.war
+*.ear
+**/.project
+**/.classpath
+**/.settings/
+blog/bin/
+local.properties
+.settings/
+.loadpath
+.recommenders
+.springBeans

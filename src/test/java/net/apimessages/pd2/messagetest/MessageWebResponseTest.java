@@ -35,7 +35,6 @@ public class MessageWebResponseTest {
         ResponseEntity<String> response = restTemplate.exchange(getRootUrl() + "/api/messages/",
         HttpMethod.GET, entity, String.class);  
         assertNotNull(response.getBody());
-        System.out.print(response.getBody());
    }
     
     @Test
@@ -45,7 +44,6 @@ public class MessageWebResponseTest {
         ResponseEntity<Message> postResponse = restTemplate.postForEntity(getRootUrl() + "/api/messages/", message, Message.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
-        System.out.print("La respuesta del postResponse" + postResponse.getBody());
      }
     
     @Test
@@ -58,8 +56,6 @@ public class MessageWebResponseTest {
         ResponseEntity<String> response = restTemplate.exchange(getRootUrl() + "/api/messages/1",
         HttpMethod.GET, entity, String.class);  
         assertNotNull(response.getBody());
-        System.out.print("La respuesta del response: " + response.getBody());
         assertNotNull(postResponse.getBody());
-        System.out.print("La respuesta del postResponse: " + postResponse.getBody());
      }
 }

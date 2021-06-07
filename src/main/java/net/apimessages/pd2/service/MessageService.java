@@ -27,7 +27,7 @@ public class MessageService implements MessageRepository{
 	}
 
 	@Override
-	public Message getById(Long id) {
+	public Message getById(Long id){
 		return messageRepository.getById(id);
 	}
 

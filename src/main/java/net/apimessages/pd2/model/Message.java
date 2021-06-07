@@ -4,9 +4,12 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Entity
 @Table (name = "messages")
+@JsonIgnoreProperties(ignoreUnknown = true, value = {"hibernateLazyInitializer", "fieldHandler"})
 public class Message {
 
 	@Id
