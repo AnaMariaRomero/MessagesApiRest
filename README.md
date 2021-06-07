@@ -20,7 +20,9 @@
 >    "recipient" : "66232385-1a3e-48c9-ac4e-7a10a87a3acc",
 >    "content" : "ya quisiera 2"
 >}
+
 ingresarlo en la siguente ruta como body:
+
 >POST http://localhost:8082/api/messages/
 
 2- Obtenga el mensaje creado anteriormente:
